@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional portfolio of Oloyede Oyeladun, UI/UX & Brand Designer">
+    <meta name="keywords" content="UI design, UX design, brand design, web design, portfolio">
+    <title>Oloyede Oyeladun | UI/UX & Brand Designer</title>
+    <style>
+        :root {
+            --burgundy: #4A1C40;
+            --sundown-pink: #FADADD;
+            --light-pink: #FFF0F5;
+            --white: #FFFFFF;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            color: var(--burgundy);
+            background: var(--light-pink);
+            line-height: 1.6;
+        }
+        header {
+            background: var(--white);
+            padding: 20px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: var(--burgundy);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            position: relative;
+        }
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--sundown-pink);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        nav a:hover:after {
+            width: 100%;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 5%;
+            background: linear-gradient(135deg, var(--sundown-pink), var(--light-pink));
+        }
+        .section {
+            padding: 80px 5%;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--burgundy);
+            margin: 15px auto;
+        }
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(74, 28, 64, 0.1);
+            transition: transform 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        .project-img {
+            height: 250px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+        .project-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 28, 64, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .project-card:hover .project-img::after {
+            opacity: 1;
+        }
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+        .project-content {
+            padding: 25px;
+        }
+        .project-tag {
+            display: inline-block;
+            background: var(--sundown-pink);
+            color: var(--burgundy);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            margin-bottom: 15px;
+        }
+        /* Skills Section */
+        .skills-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .skill-category {
+            margin-bottom: 40px;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .skill-item {
+            background: var(--white);
+            padding: 12px 25px;
+            border-radius: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        /* Process Section - New Style */
+        .process-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+        }
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--sundown-pink);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        .process-step {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .process-step:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        .process-step:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+        .process-step::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--burgundy);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+        .process-step:hover::after {
+            transform: scale(1.2);
+        }
+        .process-content {
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .process-step:hover .process-content {
+            transform: translateX(5px);
+        }
+        .process-step:nth-child(even):hover .process-content {
+            transform: translateX(-5px);
+        }
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(74, 28, 64, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--sundown-pink);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--burgundy);
+            outline: none;
+        }
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: var(--burgundy);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .submit-btn:hover {
+            background: #3a1633;
+            transform: translateY(-2px);
+        }
+        /* Footer */
+        footer {
+            background: var(--burgundy);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 5%;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .contact-links a {
+            color: var(--white);
+            font-size: 1.4rem;
+            transition: transform 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-links a:hover {
+            transform: scale(1.2);
+        }
+        .contact-links svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+        }
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(74, 28, 64, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            animation: fadeIn 0.3s;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--white);
+            animation: spin 1s ease-in-out infinite;
+            z-index: 1001;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-timeline::before {
+                left: 31px;
+            }
+            .process-step {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .process-step:nth-child(even) {
+                left: 0;
+                text-align: left;
+            }
+            .process-step::after {
+                left: 21px !important;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="spinner" id="spinner"></div>
+
+    <header>
+        <nav>
+            <h1>Oloyede Oyeladun</h1>
+            <div>
+                <a href="#about">About</a>
+                <a href="#work">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#process">Process</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Creative Designer</h2>
+        <p>UI/UX & Brand Designer - Specializing in complete digital design solutions from concept to implementation</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <p>I'm Oloyede Oyeladun, a designer with over six years of experience in UI/UX ,Graphic Design and logo design. Passionate about crafting intuitive user experiences and memorable brand identities, I seamlessly blend functionality with aesthetics. My expertise lies in creating modern, user-friendly interfaces and visually compelling designs that leave a lasting impact.
+
+                .</p>
+            <div style="margin: 40px 0;">
+                <a href="Oloyede Oyeladun.CV  (2).docx.pdf" download class="btn" style="background: var(--burgundy); color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; display: inline-block; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.2)'" onmouseout="this.style.transform=''; this.style.boxShadow=''">Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="work" class="section">
+        <h2 class="section-title">Projects</h2>
+        
+        <div class="project-grid">
+            <!-- 1. Food Recipe App -->
+            <div class="project-card">
+                <div class="project-img" onclick="openImage('FOOD RECIPE WEBSITE LOGIN UI.png')">
+                    <img src="FOOD RECIPE WEBSITE LOGIN UI.png" alt="Food Recipe App Login Screen" loading="lazy" width="350" height="250">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">Mobile App</span>
+                    <span class="project-tag">Food Tech</span>
+                    <h3>Recipe Sharing Platform</h3>
+                    <p>Login experience redesign for a social cooking app</p>
+                </div>
+            </div>
+            
+            <!-- 2. Banking App -->
+            <div class="project-card">
+                <div class="project-img" onclick="openImage('MOBILE BANKIN G APP UI.png')">
+                    <img src="MOBILE BANKIN G APP UI.png" alt="Mobile Banking App Interface" loading="lazy" width="350" height="250">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">Mobile App</span>
+                    <span class="project-tag"> <a href="https://www.figma.com/proto/wG0rBJws28ydN7aTatYFOb/MOBILE-BANKING-APP-UI?node-id=8-700&t=r4uLiDeWX45HFzTp-1">Prototype link</></span></a>
+                    <span class="project-tag">Fintech</span>
+                    <h3>Mobile Banking Redesign</h3>
+                    <p>Complete UI overhaul for a financial institution</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img" onclick="openImage('A SIMPLE FOOD DELIVERY UI.png')">
+                    <img src="A SIMPLE FOOD DELIVERY UI.png" alt="Food Ordering Website Interface" loading="lazy" width="350" height="250">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">Website</span>
+                    <span class="project-tag">E-commerce</span>
+                    <h3>Food Delivery Platform</h3>
+                    <p>End-to-end UI design for restaurant ordering</p>
+                </div>
+            </div>
+            
+            <!-- 4. Food Ordering Website -->
+            <div class="project-card">
+                <div class="project-img" onclick="openImage('FOOD WEBSITE FULL UI- 2.png')">
+                    <img src="FOOD WEBSITE FULL UI- 2.png" alt="Food Ordering Website Interface" loading="lazy" width="350" height="250">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">Website</span>
+                    <span class="project-tag">E-commerce</span>
+                    <h3>Food Delivery Platform</h3>
+                    <p>End-to-end UI design for restaurant ordering</p>
+                </div>
+            </div>
+            
+            <!-- 5. Clothing Product Page -->
+            <div class="project-card">
+                <div class="project-img" onclick="openImage('Ridgeline Product Page Final UjI.png')">
+                    <img src="Ridgeline Product Page Final UjI.png" alt="Clothing Product Page Design" loading="lazy" width="350" height="250">
+                </div>
+                <div class="project-content">
+                    <span class="project-tag">Website</span>
+                    <span class="project-tag">Clothing Product Page</span>
+                    <h3>Ridgeline Clothing Product Page</h3>
+                    <p>UI design for Ridgeline Clothing Website</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section" style="background: var(--sundown-pink);">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3 style="text-align: center;">UI/UX Design</h3>
+                <div class="skills-list">
+                    <div class="skill-item">Figma</div><div class="skill-item">Canva</div>
+
+                    <div class="skill-item">Adobe XD</div>
+                    <div class="skill-item">User Research</div>
+                    <div class="skill-item">Wireframing</div>
+                    <div class="skill-item">Prototyping</div>
+                    <div class="skill-item">Interaction Design</div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 style="text-align: center;">Logo & Branding</h3>
+                <div class="skills-list">
+                    <div class="skill-item">Adobe Illustrator</div>
+                    <div class="skill-item">Brand Identity</div>
+                    <div class="skill-item">Typography</div>
+                    <div class="skill-item">Color Theory</div>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3 style="text-align: center;">Development</h3>
+                <div class="skills-list">
+                    <div class="skill-item">HTML/CSS</div>
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">React</div>
+                    <div class="skill-item">Tailwind CSS</div>
+                    <div class="skill-item">Bootstrap</div>
+                    <div class="skill-item">Git</div>
+                    <div class="skill-item">Responsive Design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section - New Timeline Design -->
+    <section id="process" class="section">
+        <h2 class="section-title">My Design Process</h2>
+        <div class="process-container">
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-content">
+                        <h3>Discover</h3>
+                        <p>Research and understand user needs</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-content">
+                        <h3>Define</h3>
+                        <p>Identify problems and opportunities</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-content">
+                        <h3>Design</h3>
+                        <p>Create solutions and prototypes</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-content">
+                        <h3>Deliver</h3>
+                        <p>Implement and refine the final product</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with Form -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required aria-required="true"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h2>Let's Connect</h2>
+        <div class="contact-links">
+            <a href="mailto:oloyedeoyeladun56@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/oloyede-oyeladun-adesewa-9a8033328" target="_blank" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                </svg>
+            </a>
+            <a href="https://x.com/SymplySewa56" target="_blank" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/SHEWAPNG" target="_blank" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                </svg>
+            </a>
+        </div>
+        <p>© <span id="currentYear"></span> Oloyede Oyeladun. All rights reserved.</p>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal" onclick="closeImage()">
+        <span class="close-modal" aria-label="Close image">&times;</span>
+        <img id="expandedImage" alt="Expanded project view">
+    </div>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Simple image viewer functionality
+        function openImage(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const img = document.getElementById('expandedImage');
+            const spinner = document.getElementById('spinner');
+            
+            // Show loading spinner
+            spinner.style.display = 'block';
+            
+            // Load image
+            const image = new Image();
+            image.src = imgSrc;
+            image.onload = function() {
+                img.src = imgSrc;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                spinner.style.display = 'none';
+            };
+            image.onerror = function() {
+                spinner.style.display = 'none';
+                alert('Error loading image');
+            };
+        }
+        
+        function closeImage() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close if clicked outside image
+        document.querySelector('.image-modal img').onclick = function(e) {
+            e.stopPropagation();
+        };
+        
+        // Enhanced form validation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // Validate email
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Validate other fields
+            if (!name || !subject || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Here you would normally send the form data to a server
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+        
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Preload hover images for smoother transitions
+        window.addEventListener('load', function() {
+            const images = document.querySelectorAll('.project-img img');
+            images.forEach(img => {
+                const hoverImg = new Image();
+                hoverImg.src = img.src;
+            });
+        });
+    </script>
+</body>
+</html>
